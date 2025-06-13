@@ -22,7 +22,7 @@ document.getElementById("ficha-form").addEventListener("submit", function(e) {
   }
 
   // Enviar datos
-  fetch("https://script.google.com/macros/s/AKfycbzkjvMSW4eJVMwrXHa8S27JpOXEKYql3sFieHqHHU__LcG50sU028825THeqGpxLHx3/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzH8yjYWxBGFtkDqWZNTgpuV4n9iX9lk6Ald-1EgXAvVktfITIMxHI_nMDERoyHPSVW/exec", {
     method: "POST",
     body: formData
     // NO agregar headers - dejar que el navegador los maneje
