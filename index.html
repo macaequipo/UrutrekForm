@@ -1,138 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Ficha Médica</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        form { max-width: 800px; margin: auto; }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        input, select, textarea {
-            width: 100%; padding: 8px; margin-top: 5px;
-            border: 1px solid #ccc; border-radius: 4px;
-        }
-        button {
-            margin-top: 20px; padding: 10px 20px;
-            background-color: #007BFF; color: white;
-            border: none; border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover { background-color: #0056b3; }
-        button:disabled { 
-            background-color: #ccc; 
-            cursor: not-allowed;
-        }
-        .loading { color: #007BFF; margin-top: 10px; }
-        .error { color: #dc3545; margin-top: 10px; }
-        .success { color: #28a745; margin-top: 10px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ficha Médica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Ficha Médica</h1>
-    <form id="ficha-form">
-        <label>Apellido y Nombre</label>
-        <input type="text" name="nombre" required>
+<body class="bg-gray-100 font-sans">
 
-        <label>DNI</label>
-        <input type="text" name="dni" required>
+  <!-- Logo -->
+  <div class="flex justify-center mt-6">
+    <img src="LOGO 2 - COLOR.png" alt="Logo URUTREK" class="h-20">
+  </div>
 
-        <label>Fecha de nacimiento</label>
-        <input type="date" name="fecha_nacimiento" required>
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-xl mt-8 mb-16">
+    <h1 class="text-3xl font-bold text-center text-orange-600 mb-8">Ficha Médica</h1>
+    
+    <form id="ficha-form" class="space-y-6">
+      <!-- Campo -->
+      <div>
+        <label class="block font-semibold mb-1 text-gray-700">Apellido y Nombre</label>
+        <input type="text" name="nombre" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+      </div>
 
-        <label>Edad</label>
-        <input type="number" name="edad" required>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">DNI</label>
+          <input type="text" name="dni" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+        </div>
 
-        <label>Género</label>
-        <select name="genero" required>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Fecha de nacimiento</label>
+          <input type="date" name="fecha_nacimiento" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Edad</label>
+          <input type="number" name="edad" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Género</label>
+          <select name="genero" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
             <option value="">Seleccionar...</option>
             <option value="M">M</option>
             <option value="F">F</option>
-        </select>
+          </select>
+        </div>
+      </div>
 
-        <label>Nacionalidad</label>
-        <input type="text" name="nacionalidad">
+      <!-- Más campos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Nacionalidad</label>
+          <input type="text" name="nacionalidad" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Dirección</label>
+          <input type="text" name="direccion" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Ciudad</label>
+          <input type="text" name="ciudad" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Provincia</label>
+          <input type="text" name="provincia" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">País</label>
+          <input type="text" name="pais" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Teléfonos</label>
+          <input type="text" name="telefonos" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Email</label>
+          <input type="email" name="email" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-gray-700">Teléfono de emergencia</label>
+          <input type="text" name="telefono_emergencia" class="w-full border rounded-lg px-4 py-2">
+        </div>
+        <div class="md:col-span-2">
+          <label class="block font-semibold mb-1 text-gray-700">Obra Social</label>
+          <input type="text" name="obra_social" class="w-full border rounded-lg px-4 py-2">
+        </div>
+      </div>
 
-        <label>Dirección</label>
-        <input type="text" name="direccion">
-
-        <label>Ciudad</label>
-        <input type="text" name="ciudad">
-
-        <label>Provincia</label>
-        <input type="text" name="provincia">
-
-        <label>País</label>
-        <input type="text" name="pais">
-
-        <label>Teléfonos</label>
-        <input type="text" name="telefonos">
-
-        <label>Email</label>
-        <input type="email" name="email">
-
-        <label>Teléfono de emergencia</label>
-        <input type="text" name="telefono_emergencia">
-
-        <label>Obra Social</label>
-        <input type="text" name="obra_social">
-
-        <button type="submit" id="submit-btn">Enviar</button>
-        <div id="status"></div>
+      <!-- Botón -->
+      <div class="text-center">
+        <button type="submit" id="submit-btn" class="bg-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed">Enviar</button>
+        <div id="status" class="mt-4 text-sm"></div>
+      </div>
     </form>
+  </div>
 
-    <script>
-        document.getElementById("ficha-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const submitBtn = document.getElementById('submit-btn');
-            const status = document.getElementById('status');
-            
-            // Deshabilitar botón y mostrar cargando
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-            status.innerHTML = '<div class="loading">Enviando datos...</div>';
-            
-            const data = {};
-            Array.from(form.elements).forEach(el => {
-                if (el.name) data[el.name] = el.value;
-            });
+  <script>
+    document.getElementById("ficha-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = document.getElementById('submit-btn');
+      const status = document.getElementById('status');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      status.innerHTML = '<p class="text-blue-500">Enviando datos...</p>';
 
-            console.log('Datos a enviar:', data);
+      const data = {};
+      Array.from(form.elements).forEach(el => {
+        if (el.name) data[el.name] = el.value;
+      });
 
-            // CAMBIAR ESTA URL POR LA TUYA CORRECTA (debe terminar en /exec)
-            fetch("https://script.google.com/macros/s/AKfycbx4b8lI6dcOD4gUBwd1BDj-OXrqevAZgAAMN3BDg2pUqvGgNZcKMq28XUvSVAZNlUNw/exec", {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                return response.json();
-            })
-            .then(result => {
-                console.log('Success:', result);
-                status.innerHTML = '<div class="success">✓ Formulario enviado correctamente</div>';
-                form.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                status.innerHTML = `<div class="error">✗ Error al enviar: ${error.message}</div>`;
-            })
-            .finally(() => {
-                // Rehabilitar botón
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar';
-            });
-        });
-    </script>
+      fetch("https://script.google.com/macros/s/AKfycbx4b8lI6dcOD4gUBwd1BDj-OXrqevAZgAAMN3BDg2pUqvGgNZcKMq28XUvSVAZNlUNw/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+      })
+      .then(result => {
+        status.innerHTML = '<p class="text-green-600 font-semibold">✓ Formulario enviado correctamente</p>';
+        form.reset();
+      })
+      .catch(error => {
+        status.innerHTML = `<p class="text-red-600 font-semibold">✗ Error al enviar: ${error.message}</p>`;
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+      });
+    });
+  </script>
 </body>
-</html> 
+</html>
