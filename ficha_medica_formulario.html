@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha Médica</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 800px; margin: auto; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, select, textarea {
+            width: 100%; padding: 8px; margin-top: 5px;
+            border: 1px solid #ccc; border-radius: 4px;
+        }
+        button {
+            margin-top: 20px; padding: 10px 20px;
+            background-color: #007BFF; color: white;
+            border: none; border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        button:disabled { 
+            background-color: #ccc; 
+            cursor: not-allowed;
+        }
+        .loading { color: #007BFF; margin-top: 10px; }
+        .error { color: #dc3545; margin-top: 10px; }
+        .success { color: #28a745; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Ficha Médica</h1>
+    <form id="ficha-form">
+        <label>Apellido y Nombre</label>
+        <input type="text" name="nombre" required>
+
+        <label>DNI</label>
+        <input type="text" name="dni" required>
+
+        <label>Fecha de nacimiento</label>
+        <input type="date" name="fecha_nacimiento" required>
+
+        <label>Edad</label>
+        <input type="number" name="edad" required>
+
+        <label>Género</label>
+        <select name="genero" required>
+            <option value="">Seleccionar...</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+
+        <label>Nacionalidad</label>
+        <input type="text" name="nacionalidad">
+
+        <label>Dirección</label>
+        <input type="text" name="direccion">
+
+        <label>Ciudad</label>
+        <input type="text" name="ciudad">
+
+        <label>Provincia</label>
+        <input type="text" name="provincia">
+
+        <label>País</label>
+        <input type="text" name="pais">
+
+        <label>Teléfonos</label>
+        <input type="text" name="telefonos">
+
+        <label>Email</label>
+        <input type="email" name="email">
+
+        <label>Teléfono de emergencia</label>
+        <input type="text" name="telefono_emergencia">
+
+        <label>Obra Social</label>
+        <input type="text" name="obra_social">
+
+        <button type="submit" id="submit-btn">Enviar</button>
+        <div id="status"></div>
+    </form>
+
+    <script>
+        document.getElementById("ficha-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const status = document.getElementById('status');
+            
+            // Deshabilitar botón y mostrar cargando
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            status.innerHTML = '<div class="loading">Enviando datos...</div>';
+            
+            const data = {};
+            Array.from(form.elements).forEach(el => {
+                if (el.name) data[el.name] = el.value;
+            });
+
+            console.log('Datos a enviar:', data);
+
+            // CAMBIAR ESTA URL POR LA TUYA CORRECTA (debe terminar en /exec)
+            fetch("https://script.google.com/macros/s/AKfycbx4b8lI6dcOD4gUBwd1BDj-OXrqevAZgAAMN3BDg2pUqvGgNZcKMq28XUvSVAZNlUNw/exec", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                return response.json();
+            })
+            .then(result => {
+                console.log('Success:', result);
+                status.innerHTML = '<div class="success">✓ Formulario enviado correctamente</div>';
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                status.innerHTML = `<div class="error">✗ Error al enviar: ${error.message}</div>`;
+            })
+            .finally(() => {
+                // Rehabilitar botón
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar';
+            });
+        });
+    </script>
+</body>
+</html>
