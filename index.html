@@ -1,140 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ficha Médica</title>
+  <meta charset="UTF-8">
+  <title>Ficha Médica - Urutrek</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-sans text-gray-800">
+  <div class="max-w-3xl mx-auto mt-12 bg-white p-8 rounded shadow">
+    <img src="LOGO 2 - COLOR.png" alt="Urutrek Logo" class="h-16 mb-6">
 
-  <!-- Logo -->
-  <div class="flex justify-center mt-6">
-    <img src="LOGO 2 - COLOR.png" alt="Logo URUTREK" class="h-20">
-  </div>
+    <h1 class="text-2xl font-bold mb-6 text-orange-600">Ficha Médica</h1>
 
-  <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-xl mt-8 mb-16">
-    <h1 class="text-3xl font-bold text-center text-orange-600 mb-8">Ficha Médica</h1>
-    
-    <form id="ficha-form" class="space-y-6">
-      <!-- Campo -->
+    <form id="ficha-form" class="space-y-4">
       <div>
-        <label class="block font-semibold mb-1 text-gray-700">Apellido y Nombre</label>
-        <input type="text" name="nombre" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
+        <label class="font-semibold">Apellido y Nombre</label>
+        <input type="text" name="nombre" class="w-full p-2 border rounded" required>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">DNI</label>
-          <input type="text" name="dni" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
-        </div>
-
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Fecha de nacimiento</label>
-          <input type="date" name="fecha_nacimiento" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
-        </div>
+      <div>
+        <label class="font-semibold">DNI</label>
+        <input type="text" name="dni" class="w-full p-2 border rounded" required>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Edad</label>
-          <input type="number" name="edad" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
-        </div>
-
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Género</label>
-          <select name="genero" required class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400">
-            <option value="">Seleccionar...</option>
-            <option value="M">M</option>
-            <option value="F">F</option>
-          </select>
-        </div>
+      <div>
+        <label class="font-semibold">Fecha de nacimiento</label>
+        <input type="date" name="fecha_nacimiento" class="w-full p-2 border rounded" required>
       </div>
-
-      <!-- Más campos -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Nacionalidad</label>
-          <input type="text" name="nacionalidad" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Dirección</label>
-          <input type="text" name="direccion" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Ciudad</label>
-          <input type="text" name="ciudad" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Provincia</label>
-          <input type="text" name="provincia" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">País</label>
-          <input type="text" name="pais" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Teléfonos</label>
-          <input type="text" name="telefonos" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Email</label>
-          <input type="email" name="email" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-gray-700">Teléfono de emergencia</label>
-          <input type="text" name="telefono_emergencia" class="w-full border rounded-lg px-4 py-2">
-        </div>
-        <div class="md:col-span-2">
-          <label class="block font-semibold mb-1 text-gray-700">Obra Social</label>
-          <input type="text" name="obra_social" class="w-full border rounded-lg px-4 py-2">
-        </div>
+      <div>
+        <label class="font-semibold">Edad</label>
+        <input type="number" name="edad" class="w-full p-2 border rounded" required>
       </div>
-
-      <!-- Botón -->
-      <div class="text-center">
-        <button type="submit" id="submit-btn" class="bg-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed">Enviar</button>
-        <div id="status" class="mt-4 text-sm"></div>
+      <div>
+        <label class="font-semibold">Género</label>
+        <select name="genero" class="w-full p-2 border rounded" required>
+          <option value="">Seleccionar...</option>
+          <option value="M">M</option>
+          <option value="F">F</option>
+        </select>
       </div>
+      <!-- Podés seguir agregando campos -->
+
+      <button type="submit" id="submit-btn" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
+        Enviar
+      </button>
+      <div id="status" class="mt-4 text-sm"></div>
     </form>
   </div>
 
-  <script>
-    document.getElementById("ficha-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const submitBtn = document.getElementById('submit-btn');
-      const status = document.getElementById('status');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
-      status.innerHTML = '<p class="text-blue-500">Enviando datos...</p>';
-
-      const data = {};
-      Array.from(form.elements).forEach(el => {
-        if (el.name) data[el.name] = el.value;
-      });
-
-      fetch("https://script.google.com/macros/s/AKfycbx4b8lI6dcOD4gUBwd1BDj-OXrqevAZgAAMN3BDg2pUqvGgNZcKMq28XUvSVAZNlUNw/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        return response.json();
-      })
-      .then(result => {
-        status.innerHTML = '<p class="text-green-600 font-semibold">✓ Formulario enviado correctamente</p>';
-        form.reset();
-      })
-      .catch(error => {
-        status.innerHTML = `<p class="text-red-600 font-semibold">✗ Error al enviar: ${error.message}</p>`;
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar';
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
